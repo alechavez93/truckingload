@@ -1,0 +1,28 @@
+{
+  "name": "truckingload",
+  "version": "1.0.0",
+  "description": "Basic app for getting truck loads more efficiently from truckingload.com",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.1",
+    "request": "^2.87.0",
+    "socket.io": "^2.0.3",
+    "words-to-numbers": "^1.3.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alechavez93/truckingload.git"
+  },
+  "author": "Alejandro Chavez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alechavez93/truckingload/issues"
+  },
+  "homepage": "https://github.com/alechavez93/truckingload#readme"
+}
