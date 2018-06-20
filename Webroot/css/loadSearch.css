@@ -1,0 +1,156 @@
+.greenButton:hover, .blueButton:hover, .blackButton:hover, #resetDatabase:hover{
+    background: white;
+    color: #5C666A;
+}
+
+.greenButton{
+    background: #509E2F;
+    color: white;
+    border-color: #5C666A;
+}
+
+.blackButton{
+    background: #404040;
+    border-color: #5C666A;
+    color: white;
+}
+
+.blueButton{
+    background: #4A8FF1;
+    color: white;
+    border-color: #5C666A;
+}
+
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+#resetDatabase{
+    border-color: #5C666A;
+    margin-left: 15px;
+    width: 68px;
+}
+
+#addTestButton{
+    padding-right: 20px !important;
+}
+
+.first-input{
+    padding-left: 0;
+}
+
+#testListSection{
+    max-height: 325px;
+    overflow-y: scroll;
+    margin-bottom: 5px;
+}
+
+.row{
+    margin-top: 10px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.small-row{
+    padding: 7px;
+    margin-left: 0;
+    margin-top: 0;
+}
+
+.runBlock{
+    border: 1px #ccc solid;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin-right: 40px;
+    margin-bottom: 15px;
+    padding-top: 20px;
+}
+
+.progressBlock{
+    height: 200px;
+    max-height: 200px;
+    overflow-y: scroll;
+    padding-right: 10px;
+}
+
+.detailsBlock{
+    margin-top: 10px;
+    height: 45px;
+    border-top: 1px #ccc solid;
+    padding-top: 5px;
+}
+
+#resultHeader{
+    font-size: 18px;
+    margin-bottom: 0;
+    color: #404040;
+}
+
+.detail{
+    margin: 0;
+    font-size: 12px;
+}
+
+.detailButton{
+    margin-left: 0.06vw;
+}
+
+.setupList{
+    padding: 5px;
+    border: 1px solid #5C666A;
+    margin: 5px 60px 0px 60px;
+    border-radius: 5px;
+}
+
+.setupList:hover{
+    cursor: pointer;
+    background: #86CCEB;
+    color: white;
+}
+
+.loader{
+    margin-top: 55px;
+    margin-left: 42px;
+}
+
+
+/*Loading animation*/
+/*------------------------------------------------------------------------*/
+.circle {
+    animation: spin 3s linear infinite both;
+    background: #bada55;
+    border-radius: 100vmax;
+    margin: 6vh calc(5vw - 1vmin);
+    height: 2vmin;
+    position: absolute;
+    width: 2vmin;
+}
+.circle + .circle {
+    animation: spin 3s linear 1s infinite both;
+    background: #10aded;
+}
+.circle + .circle + .circle {
+    animation: spin 3s linear 2s infinite both;
+    background: #a991e5;
+}
+@keyframes spin {
+    0% {
+        transform: rotate(360deg) translate(0vmax, -4vmax);
+    }
+    50% {
+        transform: rotate(180deg) translate(0vmax, 0vmax);
+    }
+    100% {
+        transform: rotate(0deg) translate(0vmax, -4vmax);
+    }
+}
+
+
+
+
+
+
