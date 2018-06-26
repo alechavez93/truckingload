@@ -18,19 +18,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 /** Load required config files and settings */
-let truckstopCredentials = JSON.parse(fs.readFileSync('Configs/truckstopCredentials.json', 'utf8'));
 let configs = {
     baseRoute: baseRoute,
-    baseTruckstopUrl: "https://app.truckstop.com",
-    truckStats: {
-        mpg: 4.8,
-        costPerGal: 2.962
-    },
-    truckstopCredentials: truckstopCredentials
+    baseTruckstopUrl: "https://app.truckstop.com"
 };
 
 /** Initialize facades */
-let adapterFacade = new (require("./Adapters/adaptersFacade"))(configs);
+let adapterFacade = new (require("./Adapters/adaptersFacade"))();
 let serviceFacade = new (require("./Services/servicesFacade"))(configs, adapterFacade);
 
 /** Initialize Controllers */

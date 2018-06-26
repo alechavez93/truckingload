@@ -1,8 +1,8 @@
 let TruckstopAdapter = require("./truckstopAdapter");
 
 class AdapterFacade{
-    constructor(configs){
-        this.truckstopAdapter = new TruckstopAdapter(configs);
+    constructor(){
+        this.truckstopAdapter = new TruckstopAdapter();
     }
 }
 
