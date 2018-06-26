@@ -21,6 +21,12 @@
     border-color: #5C666A;
 }
 
+.yellowButton{
+    border-color: #5C666A;
+    margin-left: 15px;
+    width: 68px;
+}
+
 input[type='number'] {
     -moz-appearance:textfield;
 }
@@ -30,11 +36,7 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
 
-#resetDatabase{
-    border-color: #5C666A;
-    margin-left: 15px;
-    width: 68px;
-}
+
 
 #addTestButton{
     padding-right: 20px !important;
@@ -50,11 +52,19 @@ input::-webkit-inner-spin-button {
     margin-bottom: 5px;
 }
 
-.row{
-    margin-top: 10px;
+body{
     font-family: 'Ubuntu', sans-serif;
 }
 
+.form-group{
+    margin-top: -15px;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.row{
+    margin-top: 10px;
+}
 .small-row{
     padding: 7px;
     margin-left: 0;

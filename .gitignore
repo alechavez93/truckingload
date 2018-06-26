@@ -1,4 +1,3 @@
 node_modules/
 .idea
-Configs/truckstopCredentials.json
 test-request.js

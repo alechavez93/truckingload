@@ -19,7 +19,7 @@ class Load{
         this.payPerMile = (this.payment/this.miles).toFixed(2);
         this.emptyMileCost = ((this.emptyMiles/mpg) * costPerGal).toFixed(2);
         this.fuelCost = ((this.miles/mpg) * costPerGal).toFixed(2);
-        this.netProfit = this.payment - this.emptyMileCost - this.fuelCost;
+        this.netProfit = (this.payment - this.emptyMileCost - this.fuelCost).toFixed(2);
         this.netProfitPerMile = (this.netProfit / this.miles).toFixed(2);
     }
 }

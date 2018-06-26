@@ -58,8 +58,16 @@
     <div style="height: 20px"></div>
     <div id="searches-section" class="row">
         <div class="col-lg-12">
-            <h4 class="row">Current Searches</h4>
+            <h4 class="row">Filters</h4>
             <hr class="row">
+            <div class="row">
+                <div class="form-group col-lg-4">
+                    <h5 for="search-select">Current Search</h5>
+                    <select class="form-control" id="search-select" ng-model="currentSearch">
+                        <option ng-repeat="search in searches" value="{{search.description}}">{{search.description}}</option>
+                    </select>
+                </div>
+            </div>
         </div>
     </div>
 </div>
