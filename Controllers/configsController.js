@@ -54,11 +54,11 @@ let getConfigs = function(req, res){
 
 let updateConfigs = function(req, res){
     if(req.body.truckStats) {
-        ConfigsController.saveTruckStats(req.body.truckStats, () => {});
+        configsService.saveTruckStats(req.body.truckStats, () => {});
     }
 
     if(req.body.truckstopCredentials) {
-        ConfigsController.saveTsCredentials(req.body.truckstopCredentials, () => {})
+        configsService.saveTsCredentials(req.body.truckstopCredentials, () => {})
     }
 
     if(!req.body.truckStats || !req.body.truckstopCredentials){

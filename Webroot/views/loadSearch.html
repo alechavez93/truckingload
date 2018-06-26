@@ -7,13 +7,13 @@
                 <div class="first-input col-lg-5">
                     <div class="input-group">
                         <span class="input-group-addon">User:</span>
-                        <input ng-bind="" type="text" class="form-control" placeholder="">
+                        <input ng-model="truckstopCredentials.username" class="form-control" placeholder="">
                     </div>
                 </div>
                 <div class="first-input col-lg-5">
                     <div class="input-group">
                         <span class="input-group-addon">Pass:</span>
-                        <input ng-bind="" type="password" class="form-control" placeholder="">
+                        <input ng-model="truckstopCredentials.password" type="password" class="form-control" placeholder="">
                     </div>
                 </div>
             </div>
@@ -21,35 +21,35 @@
                 <div class="first-input col-lg-10">
                     <div class="input-group">
                         <span class="input-group-addon">TS_Auth:</span>
-                        <input ng-bind="" type="text" class="form-control" placeholder="">
+                        <input ng-model="truckstopCredentials.authToken.value" class="form-control" placeholder="">
                     </div>
                 </div>
             </div>
         </div>
-        <div id="dat-credentials" class="col-lg-6">
+        <div id="truck-stats" class="col-lg-6">
             <h4 class="row">Truck Configurations</h4>
             <div class="row">
                 <div class="first-input col-lg-4">
                     <div class="input-group">
                         <span class="input-group-addon">MPG</span>
-                        <input ng-bind="" type="number" class="form-control" placeholder="">
+                        <input ng-model="truckStats.mpg" type="number" class="form-control" placeholder="">
                     </div>
                 </div>
                 <div class="first-input col-lg-4">
                     <div class="input-group">
                         <span class="input-group-addon">Price/Gal</span>
-                        <input ng-bind="" type="number" class="form-control" placeholder="">
+                        <input ng-model="truckStats.pricePerGal" type="number" class="form-control" placeholder="">
                     </div>
                 </div>
                 <div class="first-input col-lg-4">
                     <div class="input-group">
                         <span class="input-group-addon">Weight</span>
-                        <input ng-bind="" type="number" class="form-control" placeholder="">
+                        <input ng-model="truckStats.weight" type="number" class="form-control" placeholder="">
                     </div>
                 </div>
             </div>
             <div class="row">
-                <button id="saveButton" type="button" class="col-lg-3 btn btn-default greenButton" ng-click="">
+                <button id="saveButton" type="button" class="col-lg-3 btn btn-default greenButton" ng-click="saveConfigs()">
                     <span class="btn-label"><i class="glyphicon glyphicon-floppy-disk"></i></span> SAVE
                 </button>
             </div>

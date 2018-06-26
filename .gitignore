@@ -1,3 +1,5 @@
 node_modules/
 .idea
 test-request.js
+Configs/truckStats.json
+Configs/truckstopCredentials.json
