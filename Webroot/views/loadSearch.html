@@ -63,10 +63,25 @@
             <div class="row">
                 <div class="form-group col-lg-4">
                     <h5 for="search-select">Current Search</h5>
-                    <select class="form-control" id="search-select" ng-model="currentSearch">
-                        <option ng-repeat="search in searches" value="{{search.description}}">{{search.description}}</option>
+                    <select class="form-control" id="search-select" ng-model="currentSearch" ng-change="getLoads()">
+                        <option ng-repeat="search in searches" ng-value="search">{{search.description}}</option>
                     </select>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div style="height: 20px"></div>
+    <div id="loads-section" class="row">
+        <div class="col-lg-12">
+            <h4 class="row">Loads</h4>
+            <hr class="row">
+            <div id="load-headers" class="row">
+
+            </div>
+            <div id="loads" class="row" ng-repeat="load in loads">
+                <a ng-href="{{load.detailsUrl}}">
+                    {{load.detailsUrl}}
+                </a>
             </div>
         </div>
     </div>

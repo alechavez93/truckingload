@@ -3,7 +3,7 @@ let ConfigsService = require("./configsService");
 
 class ServicesFacade{
     constructor(configs, adapterFacade){
-        this.truckstopService = new TrucksService(configs, adapterFacade);
+        this.truckstopService = new TrucksService(adapterFacade);
         this.configsService = ConfigsService.instance;
     }
 }

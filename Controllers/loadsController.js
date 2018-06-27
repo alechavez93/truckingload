@@ -45,7 +45,7 @@ let getSearchesHandler = function(req, res){
 
 let getLoadsHandler = function(req, res){
     let searchId = req.query["searchId"];
-    let size = req.query["size"] ? req.query["size"] : 200;
+    let size = req.query["size"] ? req.query["size"] : 100;
     truckstopService.getLoads(searchId, size, (loads) => {
         loads.sort((a, b) => {
             return b.netProfitPerMile - a.netProfitPerMile;

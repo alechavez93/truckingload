@@ -57,6 +57,14 @@ class ConfigsService{
             })
         }
     }
+
+    getTruckstopUrl(){
+        return "https://app.truckstop.com";
+    }
+
+    getEndpointBaseRoute(){
+        return "/api";
+    }
 }
 
 /** Init instance and export it */
