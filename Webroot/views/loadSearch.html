@@ -100,14 +100,34 @@
         <div class="col-lg-12">
             <h4 class="row">Loads</h4>
             <hr class="row">
-            <div id="load-headers" class="row">
-
-            </div>
-            <div id="loads" class="row" ng-repeat="load in loads">
-                <a ng-href="{{load.detailsUrl}}">
-                    {{load.detailsUrl}}
-                </a>
-            </div>
+            <table class="table row">
+                <thead>
+                <tr>
+                    <th scope="col">Time Listed</th>
+                    <th scope="col">Brokers Name</th>
+                    <th scope="col">Origin</th>
+                    <th scope="col">Destination</th>
+                    <th scope="col">Payment</th>
+                    <th scope="col">Fuel Cost</th>
+                    <th scope="col">Net Profit</th>
+                    <th scope="col">Profit/Mile</th>
+                    <th scope="col">Details Page</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="load in filteredLoads">
+                    <th>{{load.timeListed}}</th>
+                    <td>{{load.brokerName}}</td>
+                    <td>{{load.route.originCity + "(" + load.route.originState + ")"}}</td>
+                    <td>{{load.route.destinationCity + "(" + load.route.destinationState + ")"}}</td>
+                    <th>{{load.payment}}</th>
+                    <td>{{load.fuelCost}}</td>
+                    <td>{{load.netProfit}}</td>
+                    <td>{{load.netProfitPerMile}}</td>
+                    <td><a ng-href="{{load.detailsUrl}}">Link</a></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

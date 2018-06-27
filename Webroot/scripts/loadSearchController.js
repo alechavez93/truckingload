@@ -2,6 +2,7 @@ app.controller("loadSearchController", ["$scope", "$log", "searchService", "conf
 
     $scope.searches = [];
     $scope.currentSearch = {};
+    $scope.brokers = [{ name: "All Brokers", checked: true }];
 
     // Load the configurations
     configService.get()
@@ -22,27 +23,13 @@ app.controller("loadSearchController", ["$scope", "$log", "searchService", "conf
         });
     };
 
-    $scope.brokers = [
-        {
-            name: "All Brokers",
-            checked: true
-        },
-        {
-            name: "Blah 1",
-            checked: false
-        },
-        {
-            name: "Blah 1",
-            checked: false
-        }
-    ];
-
     // Gets updated array of loads
     $scope.getLoads = function(){
         let searchId = $scope.currentSearch.searchCriteriaId;
         loadService.getLoads(searchId)
             .then((loads) => {
                 $scope.loads = loads;
+                $scope.filteredLoads = loads;
                 $scope.brokers = [ { name: "All Brokers", checked: true } ];
                 let brokerNames = [...new Set(loads.map( load => load.brokerName ))];
                 brokerNames.forEach((name) => {
@@ -56,7 +43,11 @@ app.controller("loadSearchController", ["$scope", "$log", "searchService", "conf
 
     // Applies filters for loads
     $scope.applyFilters = function () {
-
+        $scope.filteredLoads = $scope.loads.filter(load => {
+            let hasBroker = $scope.brokers[0].checked || $scope.brokers.find(broker =>{ return broker.name === load.brokerName });
+            let inDesiredState = $scope.states[0].checked || $scope.states.find(state => { return state.code === load.route.destinationState.toUpperCase() });
+            return hasBroker && inDesiredState;
+        });
     };
 
     // Gets updated array of searches
@@ -66,8 +57,6 @@ app.controller("loadSearchController", ["$scope", "$log", "searchService", "conf
                 $scope.searches = searches;
             });
     };
-
-
 
     // Init
     getSearches();
