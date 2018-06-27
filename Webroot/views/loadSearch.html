@@ -61,12 +61,37 @@
             <h4 class="row">Filters</h4>
             <hr class="row">
             <div class="row">
-                <div class="form-group col-lg-4">
+                <div class="form-group filter col-lg-4">
                     <h5 for="search-select">Current Search</h5>
                     <select class="form-control" id="search-select" ng-model="currentSearch" ng-change="getLoads()">
-                        <option ng-repeat="search in searches" ng-value="search">{{search.description}}</option>
+                        <option class="small" ng-repeat="search in searches" ng-value="search">{{search.description}}</option>
                     </select>
                 </div>
+                <div class="filter col-lg-2">
+                    <div class="button-group">
+                        <h5>Current Brokers</h5>
+                        <div type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            Select Brokers <span class="caret"></span>
+                        </div>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="broker in brokers"><span class="checkBoxOption" data-value="broker"><input ng-model="broker.checked" type="checkbox"/>&nbsp;{{broker.name}}</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="filter col-lg-3">
+                    <div class="button-group">
+                        <h5>Current States Selected</h5>
+                        <div type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            Select Preferred States <span class="caret"></span>
+                        </div>
+                        <ul id="states-dropdown" class="dropdown-menu">
+                            <li ng-repeat="state in states"><span class="checkBoxOption" data-value="broker"><input ng-model="state.checked" type="checkbox"/>&nbsp;{{state.name+" ("+state.code+")"}}</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <button id="applyFilters" type="button" class="filter col-lg-2 btn btn-default blueButton pull-right" ng-click="applyFilters()">
+                    <span class="btn-label"><i class="glyphicon glyphicon-refresh"></i></span> APPLY
+                </button>
             </div>
         </div>
     </div>

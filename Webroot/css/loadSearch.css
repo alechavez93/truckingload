@@ -36,7 +36,9 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
 
-
+.checkBoxOption{
+    padding-left: 20px;
+}
 
 #addTestButton{
     padding-right: 20px !important;
@@ -56,9 +58,9 @@ body{
     font-family: 'Ubuntu', sans-serif;
 }
 
-.form-group{
+.filter{
     margin-top: -15px;
-    margin-right: -15px;
+    margin-right: 25px;
     margin-left: -15px;
 }
 
@@ -127,6 +129,14 @@ body{
     margin-left: 42px;
 }
 
+#states-dropdown{
+    max-height: 300px;
+    overflow-y:auto;
+}
+
+#applyFilters{
+    margin-top: 18px;
+}
 
 /*Loading animation*/
 /*------------------------------------------------------------------------*/
