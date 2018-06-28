@@ -36,16 +36,18 @@ class TruckstopService{
         this.configsService.readTruckStats((truckStats) => {
             this.truckstopAdapter.getLoads(searchId, size, (rawLoads) => {
                 let loads = [];
+                console.log(truckStats);
                 for(let rawLoad of rawLoads){
+                    let sanitisedPayment = rawLoad["Payment"] ? rawLoad["Payment"].replace(",", "") : rawLoad["Payment"];
                     let loadInfo = {
                         mpg: truckStats.mpg,
-                        costPerGal: truckStats.costPerGal,
-                        payment: Number.parseFloat(rawLoad["Payment"]),
+                        costPerGal: truckStats.pricePerGal,
+                        payment: Number.parseFloat(sanitisedPayment),
                         miles: Number.parseFloat(rawLoad["Miles"]),
                         detailsUrl: this.configsService.getTruckstopUrl() + rawLoad["DetailUrl"],
                         brokerName: rawLoad["CompanyName"],
                         pickupDate: rawLoad["PickUpDate"] + "/" + (new Date()).getFullYear(),
-                        timeListed: rawLoad["AgeHover"],
+                        timeListed: rawLoad["Age"],
                         emptyMiles: rawLoad["OriginDistance"],
                         route: {
                             originCity: rawLoad["OriginCity"],

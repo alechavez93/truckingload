@@ -16,11 +16,28 @@ class Load{
 
     /** Calculates important load information regarding the financial aspects */
     calculateStats(mpg, costPerGal){
-        this.payPerMile = (this.payment/this.miles).toFixed(2);
-        this.emptyMileCost = ((this.emptyMiles/mpg) * costPerGal).toFixed(2);
-        this.fuelCost = ((this.miles/mpg) * costPerGal).toFixed(2) + this.emptyMileCost;
-        this.netProfit = (this.payment - this.fuelCost).toFixed(2);
-        this.netProfitPerMile = (this.netProfit / this.miles).toFixed(2);
+        this.emptyMileCost = this.round(((this.emptyMiles / mpg) * costPerGal), 2);
+        this.fuelCost = this.round(((this.miles / mpg) * costPerGal) + this.emptyMileCost, 2);
+        if(this.payment) {
+            this.payPerMile = this.round((this.payment / this.miles), 2);
+            this.netProfit = this.round((this.payment - this.fuelCost), 2);
+            this.netProfitPerMile = this.round((this.netProfit / this.miles), 2);
+        }else{
+            this.payPerMile = "N/A";
+            this.netProfit = "N/A";
+            this.netProfitPerMile = "N/A";
+        }
+    }
+
+    /** Rounds values */
+    round(value, decimals) {
+        if(!decimals){
+            decimals = 2;
+        }
+        value = value * Math.pow(10, decimals);
+        value = Math.round(value);
+        value = value / Math.pow(10, decimals);
+        return value;
     }
 }
 

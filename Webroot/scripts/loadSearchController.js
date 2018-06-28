@@ -25,6 +25,9 @@ app.controller("loadSearchController", ["$scope", "$log", "searchService", "conf
 
     // Gets updated array of loads
     $scope.getLoads = function(){
+        if(!$scope.currentSearch){
+            return;
+        }
         let searchId = $scope.currentSearch.searchCriteriaId;
         loadService.getLoads(searchId)
             .then((loads) => {
@@ -44,17 +47,77 @@ app.controller("loadSearchController", ["$scope", "$log", "searchService", "conf
     // Applies filters for loads
     $scope.applyFilters = function () {
         $scope.filteredLoads = $scope.loads.filter(load => {
-            let hasBroker = $scope.brokers[0].checked || $scope.brokers.find(broker =>{ return broker.name === load.brokerName });
-            let inDesiredState = $scope.states[0].checked || $scope.states.find(state => { return state.code === load.route.destinationState.toUpperCase() });
+            // Find broker that is checked and matches the load
+            let checkedBroker = $scope.brokers.find(broker => {
+                return broker.checked && broker.name === load.brokerName;
+            });
+
+            // If all brokers is marked or checked broker is not null
+            let hasBroker = $scope.brokers[0].checked || !!checkedBroker;
+
+            // Find state that is checked and matches destination for load
+            let checkedState = $scope.states.find(state => {
+                return state.checked && state.code === load.route.destinationState.toUpperCase();
+            });
+
+            // Id all states is marked or checked state is not null
+            let inDesiredState = $scope.states[0].checked || !!checkedState;
+
             return hasBroker && inDesiredState;
         });
+    };
+
+    // Sorts loads by profit/mile
+    $scope.sortBy = function (category) {
+        let numeratedLoads = [];
+        let naLoads = [];
+        $scope.filteredLoads.forEach(load => {
+            if(!load[category] || isNaN(load[category])){
+                naLoads.push(load);
+            }else{
+                numeratedLoads.push(load);
+            }
+        });
+        numeratedLoads.sort((a, b) => {
+            return b[category] - a[category];
+        });
+        $scope.filteredLoads = numeratedLoads.concat(naLoads);
+    };
+
+    // Turns numbers into money strings
+    $scope.formatMoney = function (value){
+        if((!value && value !== 0) || isNaN(value)){
+            return value;
+        }
+        let n = 2, x = 3;
+        let re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
+        return "$" + value.toFixed(Math.max(0, ~~n)).replace(new RegExp(re, 'g'), '$&,');
+    };
+
+    // UI Friendly age
+    $scope.formatAge = function (age){
+        let sanitisedAge = age.replace("<", "");
+        let parts = sanitisedAge.split(":");
+        return parts[0] === "0" ? parts[1] + " mins" : parts[0] + "h:" + parts[1] + "min";
     };
 
     // Gets updated array of searches
     let getSearches = function () {
         searchService.getSearches()
             .then((searches) => {
-                $scope.searches = searches;
+                let searchesSynced = searches.length === $scope.searches.length;
+                for(let i = 0; i < searches.length && searchesSynced; i++){
+                    if(searches[i].description !== $scope.searches[i].description){
+                        searchesSynced = false;
+                        break;
+                    }
+                }
+                if(!searchesSynced){
+                    $scope.searches = searches;
+                }
+                if($scope.currentSearch.searchCriteriaId){
+                    $scope.getLoads();
+                }
             });
     };
 

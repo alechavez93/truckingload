@@ -129,13 +129,21 @@ body{
     margin-left: 42px;
 }
 
-#states-dropdown{
+.scrollable-dropdown{
     max-height: 300px;
     overflow-y:auto;
 }
 
 #applyFilters{
     margin-top: 18px;
+}
+
+.sortable{
+    cursor: pointer;
+}
+
+.sortable:hover{
+    text-decoration: underline;
 }
 
 /*Loading animation*/

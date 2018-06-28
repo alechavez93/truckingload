@@ -73,7 +73,7 @@
                         <div type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                             Select Brokers <span class="caret"></span>
                         </div>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu scrollable-dropdown">
                             <li ng-repeat="broker in brokers"><span class="checkBoxOption" data-value="broker"><input ng-model="broker.checked" type="checkbox"/>&nbsp;{{broker.name}}</span></li>
                         </ul>
                     </div>
@@ -84,7 +84,7 @@
                         <div type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                             Select Preferred States <span class="caret"></span>
                         </div>
-                        <ul id="states-dropdown" class="dropdown-menu">
+                        <ul id="states-dropdown" class="scrollable-dropdown dropdown-menu">
                             <li ng-repeat="state in states"><span class="checkBoxOption" data-value="broker"><input ng-model="state.checked" type="checkbox"/>&nbsp;{{state.name+" ("+state.code+")"}}</span></li>
                         </ul>
                     </div>
@@ -107,24 +107,26 @@
                     <th scope="col">Brokers Name</th>
                     <th scope="col">Origin</th>
                     <th scope="col">Destination</th>
-                    <th scope="col">Payment</th>
+                    <th class="sortable" ng-click="sortBy('miles')" scope="col">Miles</th>
+                    <th class="sortable" ng-click="sortBy('payment')" scope="col">Payment</th>
                     <th scope="col">Fuel Cost</th>
-                    <th scope="col">Net Profit</th>
-                    <th scope="col">Profit/Mile</th>
+                    <th class="sortable" ng-click="sortBy('netProfit')" scope="col">Net Profit</th>
+                    <th class="sortable" ng-click="sortBy('netProfitPerMile')" scope="col">Profit/Mile</th>
                     <th scope="col">Details Page</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr ng-repeat="load in filteredLoads">
-                    <th>{{load.timeListed}}</th>
+                    <td>{{formatAge(load.timeListed)}}</td>
                     <td>{{load.brokerName}}</td>
-                    <td>{{load.route.originCity + "(" + load.route.originState + ")"}}</td>
-                    <td>{{load.route.destinationCity + "(" + load.route.destinationState + ")"}}</td>
-                    <th>{{load.payment}}</th>
-                    <td>{{load.fuelCost}}</td>
-                    <td>{{load.netProfit}}</td>
-                    <td>{{load.netProfitPerMile}}</td>
-                    <td><a ng-href="{{load.detailsUrl}}">Link</a></td>
+                    <td>{{load.route.originCity + " (" + load.route.originState + ")"}}</td>
+                    <td>{{load.route.destinationCity + " (" + load.route.destinationState + ")"}}</td>
+                    <td>{{load.miles}} mi</td>
+                    <td>{{formatMoney(load.payment)}}</td>
+                    <td>{{formatMoney(load.fuelCost)}}</td>
+                    <td>{{formatMoney(load.netProfit)}}</td>
+                    <td>{{formatMoney(load.netProfitPerMile)}}</td>
+                    <td><a target="_blank" ng-href="{{load.detailsUrl}}">Link</a></td>
                 </tr>
                 </tbody>
             </table>
