@@ -1,7 +1,7 @@
 {
   "name": "truckingload",
   "version": "1.0.0",
-  "description": "Basic app for getting truck loads more efficiently from truckingload.com",
+  "description": "Basic app for getting truck loads more efficiently from truckstop.com",
   "main": "server.js",
   "dependencies": {
     "body-parser": "^1.18.2",
